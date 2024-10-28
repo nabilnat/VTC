@@ -2,18 +2,18 @@ import { Image, View } from "react-native";
 import { ReactLogo } from "@/utils/images";
 import { useState } from "react";
 import { Redirect } from "expo-router";
-import { Provider } from "react-redux";
-import store from "@/redux/store";
+import { useSelector } from "react-redux";
+
 export default function index ()
 {
-   const [isLogin ,setIsLogin]= useState(true)
+    const isLogged= useSelector((state:any)=>state.auth.isLogged)
     return (
            
                 <View>
                     <Image source={ReactLogo}>
                     </Image>
                     {
-                    isLogin ?
+                    !isLogged ?
                     (<Redirect href={"/(routes)/Index"}></Redirect>)
                     :
                     (<Redirect href={"/(tabs)"}></Redirect>)

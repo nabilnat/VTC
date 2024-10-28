@@ -5,21 +5,19 @@ interface User {
                 id:number,
                 name:string,
                 acces_token:string,
-                firsttime:boolean
+                firstTime:boolean
 }
 
-interface UserState {
-    user: User | null;
-}
 
-const initialState: UserState ={
-    user:{
+
+const initialState: User ={
+ 
         isLogged:false,
         id:0,
         name:"",
         acces_token:"",
-        firsttime:true
-    }
+        firstTime:true
+  
 }
 
 const authSlice = createSlice({
@@ -27,34 +25,40 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         LOGIN: (state:any, action:PayloadAction<Partial<User>>) => { 
-              state.user={...state.user,
+              state.auth={...state.auth,
                           isLogged:true,
                           id:action.payload.id,
                           name:action.payload.name,
                           acces_token:action.payload.acces_token,
-                          firsttime:false
                         }   
         },
         LOGOUT: (state:any) => {
-                state.user={...state.user,
+                state.auth={...state.auth,
                             isLogged:false,
                             id:0,
                             name:"",
                             acces_token:"",
-                            firsttime:false
                             }    
         },
         REGESTER: (state:any, action:PayloadAction<Partial<User>>)=> {
-                  state.user={...state.user,
+                  state.auth={...state.auth,
                               isLogged:true,
                               id:action.payload.id,
                               name:action.payload.name,
                               acces_token:action.payload.acces_token,
-                              firsttime:false
                               }   
         } ,
+        VISITE:(state:any)=> {
+           
+            state={...state,firstTime:"false"}
+                        
+            
+        }
+
+
       }
     }
 );
-export const { LOGIN, LOGOUT , REGESTER } = authSlice.actions;
+export const { LOGIN, LOGOUT , REGESTER ,VISITE} = authSlice.actions;
+
 export default authSlice.reducer;
