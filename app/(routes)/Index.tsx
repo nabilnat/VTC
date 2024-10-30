@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function index ()
 {
-    const firstTime = useSelector((state:any)=>state.auth.firstTime)
-    
+    const firstTime =false
     return firstTime ?
             (<Redirect href={"/(routes)/Onboarding"}></Redirect>):
             (<Redirect href={"/(routes)/Login"}></Redirect>)
