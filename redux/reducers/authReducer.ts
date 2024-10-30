@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction} from '@reduxjs/toolkit';
+import type { User } from '@/types/User';
 
-interface User {
-                isLogged:boolean,
-                id:number,
-                name:string,
-                acces_token:string,
-                firstTime:boolean
-}
 
 
 
@@ -49,9 +43,10 @@ const authSlice = createSlice({
                               }   
         } ,
         VISITE:(state:any)=> {
-           
-            state={...state,firstTime:"false"}
-                        
+         
+            state={...state,firstTime:false}
+            return state;
+            
             
         }
 

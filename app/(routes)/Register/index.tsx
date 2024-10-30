@@ -1,13 +1,34 @@
-import { Text } from "react-native";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { View, Text, TextInput, Pressable } from "react-native";
+
 
 
 export default function index(){
-   const state =useSelector((state:any)=>state.auth);
-   console.log(state)
+   const [email, setEmail] = useState("")
+   const [name, setName] = useState("")
+   const [password, setPassword] = useState("")
     return(
-        <Text>
-            login
-        </Text>
+        <View>
+            <TextInput
+            placeholder="email"
+            value={email}
+            onChangeText={setEmail}
+            />
+            <TextInput
+            placeholder="Name"
+            value={name}
+            onChangeText={setName}
+            />
+            <TextInput
+            placeholder="password"
+            value={password}
+            onChangeText={setPassword}
+            />
+            <Pressable>
+                <Text>
+                    sign up
+                </Text>
+            </Pressable>
+        </View>
     )
 }
